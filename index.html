@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bumble Beep</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Bumble Beep</h1>
+
+  <div id="intervals-section">
+    <div id="interval-list"></div>
+    <button id="btn-add">+ Add interval</button>
+  </div>
+
+  <div id="timer-section">
+    <div class="circle-wrap">
+      <svg id="timer-svg" width="220" height="220" viewBox="0 0 220 220">
+        <circle class="circle-bg" cx="110" cy="110" r="100"/>
+        <circle id="circle-progress" cx="110" cy="110" r="100"/>
+      </svg>
+      <div class="circle-center">
+        <div id="time-display">00:00</div>
+        <div id="interval-name-display">ready</div>
+        <div id="round-display"></div>
+      </div>
+    </div>
+
+    <div id="controls">
+      <button class="btn-main" id="btn-start">Start</button>
+      <button class="btn-main" id="btn-pause">Pause</button>
+      <button class="btn-main" id="btn-stop">Stop</button>
+    </div>
+  </div>
+
+  <script src="timer.js"></script>
+</body>
+</html>
