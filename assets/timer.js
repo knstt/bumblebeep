@@ -1,17 +1,8 @@
 // ── Audio ──────────────────────────────────────────────────────────────
-const ctx = new (window.AudioContext || window.webkitAudioContext)();
-
-function unlockAudio() {
-  if (ctx.state === 'suspended') ctx.resume();
-  // iOS WebKit requires an actual buffer playback within the user gesture to unlock audio
-  const buf = ctx.createBuffer(1, 1, 22050);
-  const src = ctx.createBufferSource();
-  src.buffer = buf;
-  src.connect(ctx.destination);
-  src.start(0);
-}
+let ctx = null;
 
 function beep(freq = 880, duration = 0.12, vol = 0.4) {
+  if (!ctx) return;
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
   osc.connect(gain);
@@ -172,7 +163,7 @@ function tick(now) {
 }
 
 function start() {
-  unlockAudio();
+  ctx = new (window.AudioContext || window.webkitAudioContext)();
   if (intervals.length === 0) { alert('Add at least one interval.'); return; }
   running = true;
   paused  = false;
