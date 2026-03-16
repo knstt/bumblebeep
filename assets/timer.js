@@ -76,8 +76,8 @@ function renderIntervals() {
 document.getElementById('btn-add').addEventListener('click', () => addInterval());
 
 // seed with two default intervals
-addInterval('Work', 40);
-addInterval('Rest', 20);
+addInterval('Work', 30);
+addInterval('Rest', 15);
 
 // ── Timer ──────────────────────────────────────────────────────────────
 const circleProgress = document.getElementById('circle-progress');
@@ -161,8 +161,8 @@ function tick(now) {
   rafId = requestAnimationFrame(tick);
 }
 
-function start() {
-  if (ctx.state === 'suspended') ctx.resume();
+async function start() {
+  if (ctx.state === 'suspended') await ctx.resume();
   if (intervals.length === 0) { alert('Add at least one interval.'); return; }
   running = true;
   paused  = false;
