@@ -163,7 +163,8 @@ function tick(now) {
 }
 
 function start() {
-  ctx = new (window.AudioContext || window.webkitAudioContext)();
+  ctx = new window.AudioContext();
+  console.log('AudioContext created:', ctx);
   if (intervals.length === 0) { alert('Add at least one interval.'); return; }
   running = true;
   paused  = false;
